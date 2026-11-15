@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spoty Bet Predator · Log In</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',system-ui,sans-serif}
+  body{
+    background:#0a0a0a;
+    color:#fff;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:1.5rem;
+    background-image:
+      radial-gradient(800px 500px at 15% -10%, rgba(255,255,255,.05), transparent 60%),
+      radial-gradient(700px 400px at 110% 100%, rgba(255,255,255,.04), transparent 60%);
+  }
+  .auth-card{
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:24px;
+    padding:2.5rem 2rem 2rem;
+    width:100%;
+    max-width:420px;
+    box-shadow:0 30px 80px rgba(0,0,0,.6);
+    backdrop-filter:blur(20px);
+  }
+  .auth-brand{
+    display:flex;
+    align-items:center;
+    gap:.65rem;
+    margin-bottom:2rem;
+    justify-content:center;
+  }
+  .brand-mark{
+    width:42px;height:42px;border-radius:12px;
+    background:#fff;
+    display:flex;align-items:center;justify-content:center;
+    color:#000;font-size:1.1rem;
+  }
+  .auth-brand h1{font-size:1.1rem;font-weight:900;letter-spacing:-.02em}
+  .auth-brand h1 span{
+    background:#fff;color:#000;
+    padding:.05rem .4rem;border-radius:6px;
+    margin-left:.2rem;
+  }
+  .auth-card h2{
+    font-size:1.6rem;font-weight:900;letter-spacing:-.03em;
+    margin-bottom:.4rem;text-align:center;
+  }
+  .auth-card .sub{
+    font-size:.8rem;color:#888;font-weight:600;
+    text-align:center;margin-bottom:2rem;line-height:1.5;
+  }
+  .welcome-banner{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:10px;
+    padding:.6rem .9rem;
+    margin-bottom:1.2rem;
+    font-size:.75rem;
+    font-weight:600;
+    color:#ccc;
+    text-align:center;
+    display:none;
+  }
+  .welcome-banner.show{display:block}
+  .welcome-banner b{color:#fff}
+  .field{margin-bottom:1rem}
+  .field label{
+    display:flex;align-items:center;gap:.4rem;
+    font-size:.68rem;font-weight:700;
+    color:#aaa;margin-bottom:.5rem;
+    letter-spacing:.3px;
+  }
+  .field label i{font-size:.7rem;color:#666}
+  .field input{
+    width:100%;background:rgba(0,0,0,.4);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:12px;padding:.85rem 1rem;
+    color:#fff;font-size:.9rem;font-weight:500;
+    outline:none;transition:.2s;
+    font-family:inherit;
+  }
+  .field input::placeholder{color:#555;font-weight:500}
+  .field input:focus{
+    border-color:#fff;
+    background:rgba(0,0,0,.6);
+    box-shadow:0 0 0 4px rgba(255,255,255,.06);
+  }
+  .pw-wrap{position:relative}
+  .pw-toggle{
+    position:absolute;right:.7rem;top:50%;transform:translateY(-50%);
+    background:none;border:none;color:#555;cursor:pointer;
+    font-size:.85rem;padding:.3rem;
+    transition:.15s;
+  }
+  .pw-toggle:hover{color:#fff}
+  .btn-gold{
+    width:100%;padding:.9rem;border-radius:12px;
+    background:#fff;
+    color:#000;font-weight:800;font-size:.85rem;
+    letter-spacing:.3px;
+    transition:.2s;cursor:pointer;border:none;
+    display:flex;align-items:center;justify-content:center;gap:.5rem;
+    font-family:inherit;
+    margin-top:.5rem;
+  }
+  .btn-gold:hover{background:#e5e5e5;transform:translateY(-1px)}
+  .btn-gold:active{transform:translateY(0)}
+  .btn-gold:disabled{opacity:.5;cursor:wait;transform:none}
+  .msg{
+    margin-top:1rem;font-size:.78rem;font-weight:600;
+    text-align:center;min-height:1.2rem;
+  }
+  .msg.err{color:#ff6b6b}
+  .msg.ok{color:#6bffa3}
+  .switch-line{
+    margin-top:1.5rem;text-align:center;font-size:.78rem;
+    color:#888;font-weight:500;
+  }
+  .switch-line a{color:#fff;text-decoration:none;font-weight:800}
+  .switch-line a:hover{text-decoration:underline}
+  .tg-footer{
+    margin-top:1.8rem;padding-top:1.4rem;
+    border-top:1px solid rgba(255,255,255,.08);
+    text-align:center;
+  }
+  .tg-footer a{
+    display:inline-flex;align-items:center;gap:.45rem;
+    color:#888;font-size:.72rem;font-weight:700;
+    text-decoration:none;
+    transition:.15s;
+  }
+  .tg-footer a:hover{color:#fff}
+  .tg-footer a i{font-size:.9rem}
+</style>
+</head>
+<body>
+
+<div class="auth-card">
+  <div class="auth-brand">
+    <div class="brand-mark"><i class="fa-solid fa-basketball"></i></div>
+    <h1>SPOTY BET <span>PREDATOR</span></h1>
+  </div>
+
+  <h2>Welcome Back</h2>
+  <p class="sub">Log in to your predator account.</p>
+
+  <div class="welcome-banner" id="welcomeBanner"></div>
+
+  <form id="loginForm">
+    <div class="field">
+      <label><i class="fa-solid fa-envelope"></i> Email</label>
+      <input type="email" id="email"  autocomplete="email" required>
+    </div>
+    <div class="field">
+      <label><i class="fa-solid fa-lock"></i> Password</label>
+      <div class="pw-wrap">
+        <input type="password" id="password" autocomplete="current-password" required>
+        <button type="button" class="pw-toggle" id="pwToggle" tabindex="-1" aria-label="Show password">
+          <i class="fa-solid fa-eye"></i>
+        </button>
+      </div>
+    </div>
+    <button type="submit" class="btn-gold" id="submitBtn">
+      <i class="fa-solid fa-unlock"></i> Log In
+    </button>
+    <div class="msg" id="msg"></div>
+  </form>
+
+  <div class="switch-line">
+    No account? <a href="/signup">Sign up</a>
+  </div>
+
+  <div class="tg-footer">
+    <a href="https://t.me/MAFIAN_TECH_CHANNEL" target="_blank" rel="noopener">
+      <i class="fa-brands fa-telegram"></i> Join my channel
+    </a>
+  </div>
+</div>
+
+<script>
+const welcomeUser = sessionStorage.getItem('sbp_welcome');
+if (welcomeUser) {
+  const banner = document.getElementById('welcomeBanner');
+  banner.innerHTML = `👋 Welcome <b>${welcomeUser}</b>! Log in to continue.`;
+  banner.classList.add('show');
+  sessionStorage.removeItem('sbp_welcome');
+}
+
+const form = document.getElementById('loginForm');
+const msg = document.getElementById('msg');
+const btn = document.getElementById('submitBtn');
+const pwInput = document.getElementById('password');
+const pwToggle = document.getElementById('pwToggle');
+
+pwToggle.addEventListener('click', () => {
+  const isPw = pwInput.type === 'password';
+  pwInput.type = isPw ? 'text' : 'password';
+  pwToggle.innerHTML = `<i class="fa-solid ${isPw ? 'fa-eye-slash' : 'fa-eye'}"></i>`;
+});
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  msg.textContent = '';
+  msg.className = 'msg';
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Logging in...';
+
+  const email = document.getElementById('email').value.trim();
+  const password = pwInput.value;
+
+  try {
+    const res = await fetch('/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.error || 'Wrong email or password bruu');
+    }
+
+    localStorage.setItem('sbp_token', data.token);
+    localStorage.setItem('sbp_user', JSON.stringify(data.user || {}));
+
+    msg.textContent = '✓ Logged in! Taking you to dashboard...';
+    msg.className = 'msg ok';
+
+    setTimeout(() => {
+      window.location.href = '/dashboard';
+    }, 900);
+
+  } catch (err) {
+    msg.textContent = '✗ ' + err.message;
+    msg.className = 'msg err';
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> Log In';
+  }
+});
+</script>
+
+</body>
+</html>
