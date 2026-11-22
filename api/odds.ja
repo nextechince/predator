@@ -1,16 +1,211 @@
+
+const LEAGUES = {
+  soccer_epl: "Premier League",
+  soccer_spain_la_liga: "La Liga",
+  soccer_italy_serie_a: "Serie A",
+  soccer_germany_bundesliga: "Bundesliga",
+  soccer_france_ligue_one: "Ligue 1",
+  soccer_uefa_champs_league: "Champions League",
+  soccer_uefa_europa_league: "Europa League"
+};
+
+const ALLOWED_REGIONS = ["eu", "uk", "us", "us2", "au"];
+
+const ALLOWED_MARKETS = ["h2h"];
+
+function getBestMarket(event, marketKey) {
+  let best = null;
+
+  for (const bookmaker of event.bookmakers || []) {
+    for (const market of bookmaker.markets || []) {
+      if (market.key !== marketKey) continue;
+
+      if (!best || (market.last_update && market.last_update > best.last_update)) {
+        best = {
+          market,
+          bookmaker: bookmaker.title,
+            last_update: market.last_update || ""
+        };
+      }
+    }
+  }
+
+  return best;
+}
+
+function normalizeMatch(event, sportKey) {
+  const result = getBestMarket(event, "h2h");
+  const outcomes = result?.market?.outcomes || [];
+
+  const homeOutcome = outcomes.find(
+    outcome => outcome.name === event.home_team
+  );
+
+  const awayOutcome = outcomes.find(
+    outcome => outcome.name === event.away_team
+  );
+
+  const drawOutcome = outcomes.find(
+    outcome => outcome.name.toLowerCase() === "draw"
+  );
+
+  const commenceTime = event.commence_time;
+
+  return {
+    id: event.id,
+    sport: sportKey,
+    league: LEAGUES[sportKey] || sportKey,
+    home: event.home_team,
+    away: event.away_team,
+    commenceTime,
+    timestamp: commenceTime ? new Date(commenceTime).getTime() : null,
+    odds: {
+      home: homeOutcome?.price ?? null,
+      draw: drawOutcome?.price ?? null,
+      away: awayOutcome?.price ?? null
+    },
+    bookmaker: result?.bookmaker || null,
+    lastUpdated: result?.market?.last_update || null,
+    hasOdds: Boolean(homeOutcome && awayOutcome),
+    isLive: commenceTime
+      ? new Date(commenceTime).getTime() <= Date.now()
+      : false
+  };
+}
+
+function getLeagueList() {
+  return Object.entries(LEAGUES).map(([key, name]) => ({
+    key,
+    name
+  }));
+}
+
 export default async function handler(req, res) {
-  const league = req.query.league || 'soccer_epl';
-  const key = '3ff3c5ffc1f3049807f3590b29d6e2b1';
-  if (!key) return res.status(500).json({ error: 'ODDS_API_KEY missing' });
+  res.setHeader("Cache-Control", "s-maxage=45, stale-while-revalidate=120");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
+  if (req.method !== "GET") {
+    res.setHeader("Allow", "GET, OPTIONS");
+    return res.status(405).json({
+      success: false,
+      error: "Method not allowed"
+    });
+  }
+
+  const API_KEY = "3ff3c5ffc1f3049807f3590b29d6e2b1";
+
+  if (!API_KEY) {
+    return res.status(500).json({
+      success: false,
+      error: "Odds API is not configured",
+      message: "ODDS_API_KEY is missing from the server environment."
+    });
+  }
+
+  const requestedLeague = String(req.query.league || "all").toLowerCase();
+  const requestedRegion = String(req.query.region || "eu").toLowerCase();
+
+  if (!ALLOWED_REGIONS.includes(requestedRegion)) {
+    return res.status(400).json({
+      success: false,
+      error: "Invalid region",
+      allowedRegions: ALLOWED_REGIONS
+    });
+  }
+
+  let selectedLeagues;
+
+  if (requestedLeague === "all") {
+    selectedLeagues = Object.keys(LEAGUES);
+  } else if (LEAGUES[requestedLeague]) {
+    selectedLeagues = [requestedLeague];
+  } else {
+    return res.status(400).json({
+      success: false,
+      error: "Invalid league",
+      availableLeagues: getLeagueList()
+    });
+  }
 
   try {
-    const url = `https://api.the-odds-api.com/v4/sports/${league}/odds/?apiKey=${key}&regions=eu&markets=h2h&oddsFormat=decimal`;
-    const r = await fetch(url);
-    if (!r.ok) throw new Error(`Odds API ${r.status}`);
-    const data = await r.json();
-    res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=120');
-    return res.status(200).json(data);
-  } catch (err) {
-    return res.status(500).json({ error: err.message });
+    const results = await Promise.all(
+      selectedLeagues.map(async sportKey => {
+        const url = new URL(
+          `https://api.the-odds-api.com/v4/sports/${sportKey}/odds`
+        );
+
+        url.searchParams.set("regions", requestedRegion);
+        url.searchParams.set("markets", ALLOWED_MARKETS.join(","));
+        url.searchParams.set("oddsFormat", "decimal");
+        url.searchParams.set("dateFormat", "iso");
+
+        const response = await fetch(url.toString(), {
+          method: "GET",
+          headers: {
+            "x-api-key": API_KEY
+          }
+        });
+
+        if (!response.ok) {
+          const message = await response.text();
+
+          return {
+            league: sportKey,
+            success: false,
+            error: response.status,
+            message
+          };
+        }
+
+        const events = await response.json();
+
+        return {
+          league: sportKey,
+          success: true,
+          matches: events.map(event => normalizeMatch(event, sportKey))
+        };
+      })
+    );
+
+    const matches = results
+      .flatMap(result => result.matches || [])
+      .filter(match => match.home && match.away)
+      .sort((a, b) => {
+        const timeA = a.timestamp || 0;
+        const timeB = b.timestamp || 0;
+        return timeA - timeB;
+      });
+
+    const errors = results
+      .filter(result => !result.success)
+      .map(result => ({
+        league: result.league,
+        error: result.error,
+        message: result.message
+      }));
+
+    return res.status(200).json({
+      success: true,
+      source: "The Odds API",
+      region: requestedRegion,
+      count: matches.length,
+      updatedAt: new Date().toISOString(),
+      leagues: LEAGUES,
+      leagueList: getLeagueList(),
+      matches,
+      errors
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      error: "Failed to retrieve odds",
+      message: error.message || "Unexpected server error"
+    });
   }
 }
