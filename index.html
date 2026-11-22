@@ -1,0 +1,444 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#000000">
+<meta name="description" content="Spoty Bet Predator — Predict. Analyze. Win.">
+<title>Spoty Bet Predator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{
+--bg:#000;
+--white:#fff;
+--muted:#777;
+--border:rgba(255,255,255,.1);
+}
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+html,body{
+width:100%;
+height:100%;
+overflow:hidden;
+background:#000;
+font-family:Inter,sans-serif;
+color:#fff;
+}
+body{
+display:flex;
+align-items:center;
+justify-content:center;
+}
+.screen{
+position:relative;
+width:100%;
+height:100%;
+min-height:100dvh;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+background:
+radial-gradient(ellipse at 50% 48%,#161616 0%,#080808 38%,#000 76%);
+}
+.noise{
+position:absolute;
+inset:0;
+opacity:.025;
+pointer-events:none;
+background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
+}
+.grid{
+position:absolute;
+inset:0;
+background-image:
+linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+background-size:60px 60px;
+mask-image:radial-gradient(ellipse at center,black,transparent 75%);
+}
+.top-brand{
+position:absolute;
+top:35px;
+left:0;
+right:0;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:11px;
+animation:fadeDown 1s ease both;
+}
+.brand-icon{
+width:36px;
+height:36px;
+border:1px solid rgba(255,255,255,.14);
+border-radius:11px;
+display:grid;
+place-items:center;
+background:rgba(255,255,255,.03);
+font-size:16px;
+}
+.brand-text{
+font-size:11px;
+font-weight:900;
+letter-spacing:2px;
+line-height:1.5;
+}
+.brand-text span{
+display:block;
+font-size:8px;
+letter-spacing:3.5px;
+color:#777;
+}
+.center{
+position:relative;
+z-index:2;
+display:flex;
+flex-direction:column;
+align-items:center;
+text-align:center;
+width:min(100%,500px);
+padding:25px;
+}
+emblem{
+display:block;
+}
+.emblem{
+position:relative;
+width:174px;
+height:174px;
+display:flex;
+align-items:center;
+justify-content:center;
+margin-bottom:35px;
+}
+.orbit{
+position:absolute;
+inset:0;
+border:1px solid rgba(255,255,255,.07);
+border-radius:50%;
+}
+.orbit.two{
+inset:13px;
+border-color:rgba(255,255,255,.055);
+}
+.orbit.three{
+inset:26px;
+border-color:rgba(255,255,255,.04);
+}
+.orbit-ring{
+position:absolute;
+inset:0;
+border-radius:50%;
+border:1px solid transparent;
+border-top-color:rgba(255,255,255,.65);
+border-right-color:rgba(255,255,255,.12);
+animation:rotate 8s linear infinite;
+}
+.orbit-ring:after{
+content:"";
+position:absolute;
+width:5px;
+height:5px;
+border-radius:50%;
+background:#fff;
+top:10px;
+left:50%;
+box-shadow:0 0 12px #fff,0 0 25px rgba(255,255,255,.6);
+}
+.emblem-core{
+position:relative;
+width:102px;
+height:102px;
+border-radius:50%;
+border:1px solid rgba(255,255,255,.16);
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:4px;
+background:radial-gradient(circle,#222 0%,#080808 70%);
+box-shadow:0 0 60px rgba(255,255,255,.07),inset 0 0 25px rgba(255,255,255,.035);
+animation:breath 3s ease-in-out infinite;
+}
+.emblem-core .crown{
+font-size:18px;
+position:absolute;
+top:-12px;
+filter:drop-shadow(0 0 8px rgba(255,255,255,.25));
+}
+.emblem-core .shield{
+font-size:38px;
+color:#fff;
+}
+.emblem-core .shield i{
+filter:drop-shadow(0 0 12px rgba(255,255,255,.2));
+}
+.brand-title{
+font-size:clamp(30px,7vw,51px);
+font-weight:900;
+letter-spacing:-2.8px;
+line-height:1.04;
+animation:fadeUp .9s .2s ease both;
+}
+.brand-title span{
+display:block;
+}
+.brand-title .predator{
+color:#fff;
+}
+.tagline{
+font-size:10px;
+letter-spacing:5px;
+color:#777;
+text-transform:uppercase;
+margin-top:17px;
+animation:fadeUp .9s .35s ease both;
+}
+.divider{
+width:34px;
+height:1px;
+background:#555;
+margin:28px 0;
+animation:fadeUp .9s .45s ease both;
+}
+.status{
+display:flex;
+align-items:center;
+gap:9px;
+font-size:9px;
+font-weight:600;
+letter-spacing:2px;
+color:#aaa;
+text-transform:uppercase;
+animation:fadeUp .9s .5s ease both;
+}
+.status-dot{
+width:6px;
+height:6px;
+border-radius:50%;
+background:#fff;
+box-shadow:0 0 10px rgba(255,255,255,.7);
+animation:pulse 1.5s infinite;
+}
+.loader{
+width:190px;
+height:2px;
+background:rgba(255,255,255,.09);
+margin-top:22px;
+overflow:hidden;
+border-radius:5px;
+}
+.loader-bar{
+height:100%;
+width:35%;
+background:#fff;
+box-shadow:0 0 12px rgba(255,255,255,.3);
+animation:loading 1.8s ease-in-out infinite;
+border-radius:5px;
+}
+.bottom{
+position:absolute;
+bottom:32px;
+left:0;
+right:0;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:9px;
+animation:fadeUp 1s .7s ease both;
+}
+.bottom-brand{
+font-size:8px;
+letter-spacing:3px;
+color:#555;
+}
+.bottom-version{
+font-size:8px;
+color:#333;
+letter-spacing:1px;
+}
+.corner{
+position:absolute;
+width:22px;
+height:22px;
+border-color:rgba(255,255,255,.15);
+border-style:solid;
+}
+.corner.tl{top:24px;left:24px;border-width:1px 0 0 1px}
+.corner.tr{top:24px;right:24px;border-width:1px 1px 0 0}
+.corner.bl{bottom:24px;left:24px;border-width:0 0 1px 1px}
+.corner.br{bottom:24px;right:24px;border-width:0 1px 1px 0}
+.retry{
+display:none;
+margin-top:20px;
+padding:11px 18px;
+border:1px solid rgba(255,255,255,.2);
+border-radius:10px;
+background:rgba(255,255,255,.04);
+color:#fff;
+font-size:11px;
+font-weight:600;
+}
+.retry.show{
+display:block;
+}
+@keyframes rotate{to{transform:rotate(360deg)}}
+@keyframes breath{
+0%,100%{box-shadow:0 0 50px rgba(255,255,255,.04),inset 0 0 25px rgba(255,255,255,.025);transform:scale(1)}
+50%{box-shadow:0 0 75px rgba(255,255,255,.09),inset 0 0 30px rgba(255,255,255,.05);transform:scale(1.035)}
+}
+@keyframes pulse{
+0%,100%{opacity:1}
+50%{opacity:.25}
+}
+@keyframes loading{
+0%{transform:translateX(-120%)}
+100%{transform:translateX(380%)}
+}
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(12px)}
+to{opacity:1;transform:translateY(0)}
+}
+@keyframes fadeDown{
+from{opacity:0;transform:translateY(-12px)}
+to{opacity:1;transform:translateY(0)}
+}
+@media(max-width:600px){
+.top-brand{top:26px}
+.emblem{width:148px;height:148px;margin-bottom:29px}
+.emblem-core{width:88px;height:88px}
+.emblem-core .shield{font-size:32px}
+.brand-title{font-size:38px;letter-spacing:-2px}
+.tagline{font-size:9px;letter-spacing:3.5px}
+.divider{margin:24px 0}
+.loader{width:165px}
+.bottom{bottom:28px}
+.corner.tl{top:14px;left:14px}
+.corner.tr{top:14px;right:14px}
+.corner.bl{bottom:14px;left:14px}
+.corner.br{bottom:14px;right:14px}
+}
+@media(max-height:600px){
+.emblem{width:120px;height:120px;margin-bottom:18px}
+.emblem-core{width:76px;height:76px}
+.emblem-core .shield{font-size:29px}
+.brand-title{font-size:32px}
+.tagline{margin-top:10px}
+.divider{margin:17px 0}
+.loader{margin-top:15px}
+.bottom{bottom:18px}
+}
+</style>
+</head>
+<body>
+<div class="screen">
+<div class="noise"></div>
+<div class="grid"></div>
+
+<div class="corner tl"></div>
+<div class="corner tr"></div>
+<div class="corner bl"></div>
+<div class="corner br"></div>
+
+<div class="top-brand">
+<div class="brand-icon"><i class="fa-solid fa-crown"></i></div>
+<div class="brand-text">SPOTY BET<span>PREDATOR</span></div>
+</div>
+
+<main class="center">
+<div class="emblem">
+<div class="orbit"></div>
+<div class="orbit two"></div>
+<div class="orbit three"></div>
+<div class="orbit-ring"></div>
+<div class="emblem-core">
+<div class="crown"><i class="fa-solid fa-crown"></i></div>
+<div class="shield"><i class="fa-solid fa-shield-halved"></i></div>
+</div>
+</div>
+
+<h1 class="brand-title">
+<span>SPOTY BET</span>
+<span class="predator">PREDATOR</span>
+</h1>
+
+<p class="tagline">Predict. Analyze. Win.</p>
+
+<div class="divider"></div>
+
+<div class="status" id="status">
+<div class="status-dot"></div>
+<span id="statusText">Initializing Predator</span>
+</div>
+
+<div class="loader">
+<div class="loader-bar"></div>
+</div>
+
+<button class="retry" id="retryButton">Retry connection</button>
+</main>
+
+<footer class="bottom">
+<div class="bottom-brand">BUILT FOR THE GAME · POWERED BY DATA</div>
+<div class="bottom-version">SPOTY PREDATOR · V1.0</div>
+</footer>
+</div>
+
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+import{getAuth,onAuthStateChanged}from"https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+const firebaseConfig={
+apiKey:"AIzaSyAGU-ccpREBZBg7ktSn5blWpdmzhUM_Npo",
+authDomain:"sporty-odds.firebaseapp.com",
+projectId:"sporty-odds",
+storageBucket:"sporty-odds.firebasestorage.app",
+messagingSenderId:"906098232394",
+appId:"1:906098232394:web:daf4606cda0d8bf7e82ab3",
+measurementId:"G-4PZMK4FSFL"
+};
+
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);
+const statusText=document.getElementById("statusText");
+const retryButton=document.getElementById("retryButton");
+let finished=false;
+
+function route(user){
+if(finished)return;
+finished=true;
+statusText.textContent=user?"Access verified":"Preparing access";
+setTimeout(()=>{
+window.location.replace(user?"/dashboard":"/login");
+},450);
+}
+
+function checkSession(){
+finished=false;
+retryButton.classList.remove("show");
+statusText.textContent="Initializing Predator";
+const unsubscribe=onAuthStateChanged(auth,user=>{
+unsubscribe();
+route(user);
+},error=>{
+statusText.textContent="Connection interrupted";
+retryButton.classList.add("show");
+});
+}
+
+retryButton.addEventListener("click",()=>{
+checkSession();
+});
+
+checkSession();
+</script>
+</body>
+</html>
