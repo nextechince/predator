@@ -1,213 +1,268 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spoty Bet Predator · Sign Up</title>
+<meta name="theme-color" content="#000000">
+<title>Create Account — Spoty Bet Predator</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <style>
-  *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',system-ui,sans-serif}
-  body{
-    background:#0a0a0a;
-    color:#fff;
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:1.5rem;
-    background-image:
-      radial-gradient(800px 500px at 15% -10%, rgba(255,255,255,.05), transparent 60%),
-      radial-gradient(700px 400px at 110% 100%, rgba(255,255,255,.04), transparent 60%);
-  }
-  .auth-card{
-    background:rgba(255,255,255,.03);
-    border:1px solid rgba(255,255,255,.1);
-    border-radius:24px;
-    padding:2.5rem 2rem 2rem;
-    width:100%;
-    max-width:420px;
-    box-shadow:0 30px 80px rgba(0,0,0,.6);
-    backdrop-filter:blur(20px);
-  }
-  .auth-brand{
-    display:flex;
-    align-items:center;
-    gap:.65rem;
-    margin-bottom:2rem;
-    justify-content:center;
-  }
-  .brand-mark{
-    width:42px;height:42px;border-radius:12px;
-    background:#fff;
-    display:flex;align-items:center;justify-content:center;
-    color:#000;font-size:1.1rem;
-  }
-  .auth-brand h1{font-size:1.1rem;font-weight:900;letter-spacing:-.02em}
-  .auth-brand h1 span{
-    background:#fff;color:#000;
-    padding:.05rem .4rem;border-radius:6px;
-    margin-left:.2rem;
-  }
-  .auth-card h2{
-    font-size:1.6rem;font-weight:900;letter-spacing:-.03em;
-    margin-bottom:.4rem;text-align:center;
-  }
-  .auth-card .sub{
-    font-size:.8rem;color:#888;font-weight:600;
-    text-align:center;margin-bottom:2rem;line-height:1.5;
-  }
-  .field{margin-bottom:1rem}
-  .field label{
-    display:flex;align-items:center;gap:.4rem;
-    font-size:.68rem;font-weight:700;
-    color:#aaa;margin-bottom:.5rem;
-    letter-spacing:.3px;
-  }
-  .field label i{font-size:.7rem;color:#666}
-  .field input{
-    width:100%;background:rgba(0,0,0,.4);
-    border:1px solid rgba(255,255,255,.1);
-    border-radius:12px;padding:.85rem 1rem;
-    color:#fff;font-size:.9rem;font-weight:500;
-    outline:none;transition:.2s;
-    font-family:inherit;
-  }
-  .field input::placeholder{color:#555;font-weight:500}
-  .field input:focus{
-    border-color:#fff;
-    background:rgba(0,0,0,.6);
-    box-shadow:0 0 0 4px rgba(255,255,255,.06);
-  }
-  .btn-gold{
-    width:100%;padding:.9rem;border-radius:12px;
-    background:#fff;
-    color:#000;font-weight:800;font-size:.85rem;
-    letter-spacing:.3px;
-    transition:.2s;cursor:pointer;border:none;
-    display:flex;align-items:center;justify-content:center;gap:.5rem;
-    font-family:inherit;
-    margin-top:.5rem;
-  }
-  .btn-gold:hover{background:#e5e5e5;transform:translateY(-1px)}
-  .btn-gold:active{transform:translateY(0)}
-  .btn-gold:disabled{opacity:.5;cursor:wait;transform:none}
-  .msg{
-    margin-top:1rem;font-size:.78rem;font-weight:600;
-    text-align:center;min-height:1.2rem;
-  }
-  .msg.err{color:#ff6b6b}
-  .msg.ok{color:#6bffa3}
-  .switch-line{
-    margin-top:1.5rem;text-align:center;font-size:.78rem;
-    color:#888;font-weight:500;
-  }
-  .switch-line a{color:#fff;text-decoration:none;font-weight:800}
-  .switch-line a:hover{text-decoration:underline}
-  .tg-footer{
-    margin-top:1.8rem;padding-top:1.4rem;
-    border-top:1px solid rgba(255,255,255,.08);
-    text-align:center;
-  }
-  .tg-footer a{
-    display:inline-flex;align-items:center;gap:.45rem;
-    color:#888;font-size:.72rem;font-weight:700;
-    text-decoration:none;
-    transition:.15s;
-  }
-  .tg-footer a:hover{color:#fff}
-  .tg-footer a i{font-size:.9rem}
+:root {
+  --bg:#000;
+  --surface:#0b0b0b;
+  --surface2:#111;
+  --text:#fff;
+  --muted:#888;
+  --border:rgba(255,255,255,.1);
+  --accent:#fff;
+  --danger:#ff5b5b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+body.light{--bg:#f5f5f5;--surface:#fff;--surface2:#eee;--text:#000;--muted:#666;--border:rgba(0,0,0,.12);--accent:#000}
+button,input{font:inherit}
+button{cursor:pointer}
+.page{min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr}
+.hero{position:relative;min-height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:42px}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 38%,#292929 0,#111 35%,#000 75%);z-index:0}
+.hero-bg:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,#000 100%),repeating-linear-gradient(90deg,transparent 0 80px,rgba(255,255,255,.025) 81px 82px)}
+.hero-bg:after{content:"";position:absolute;width:480px;height:480px;border:1px solid rgba(255,255,255,.06);border-radius:50%;top:18%;left:50%;transform:translateX(-50%);box-shadow:0 0 80px rgba(255,255,255,.03),inset 0 0 70px rgba(255,255,255,.025)}
+.hero-content,.hero-footer{position:relative;z-index:1}
+.brand{display:flex;align-items:center;gap:13px}
+.brand-icon{width:48px;height:48px;border:1px solid var(--border);border-radius:15px;display:grid;place-items:center;font-size:23px;background:rgba(255,255,255,.04)}
+.brand-name{font-size:14px;font-weight:900;letter-spacing:1.5px;line-height:1.4}
+.brand-name span{display:block;color:var(--muted);font-size:10px;letter-spacing:3px}
+.hero-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100%;text-align:center;padding:0 20px}
+.predator-logo{width:155px;height:155px;border:1px solid rgba(255,255,255,.13);border-radius:50%;margin:0 auto 24px;display:grid;place-items:center;font-size:65px;color:#fff;position:relative;box-shadow:0 0 70px rgba(255,255,255,.05),inset 0 0 30px rgba(255,255,255,.03)}
+.predator-logo:before{content:"";position:absolute;inset:9px;border:1px solid rgba(255,255,255,.07);border-radius:50%}
+.hero-center h1{font-size:clamp(32px,4vw,54px);font-weight:900;letter-spacing:-2px;line-height:1.05}
+.hero-center h1 span{display:block}
+.hero-center p{margin-top:16px;color:#aaa;font-size:12px;letter-spacing:4px;text-transform:uppercase}
+.hero-points{display:flex;justify-content:center;gap:28px;margin-top:38px}
+.hero-point{font-size:11px;color:#aaa;display:flex;align-items:center;gap:8px}
+.hero-point i{color:#fff}
+.hero-footer{font-size:11px;color:#666;letter-spacing:1px}
+.auth-side{display:flex;align-items:center;justify-content:center;padding:35px;background:var(--bg);position:relative}
+.theme-btn{position:absolute;top:25px;right:25px;width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:var(--surface);color:var(--text);display:grid;place-items:center}
+.auth-card{width:100%;max-width:430px;background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:34px;box-shadow:0 30px 100px rgba(255,255,255,.025)}
+.card-label{font-size:10px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-bottom:13px}
+.auth-card h2{font-size:28px;font-weight:800;letter-spacing:-1px}
+.auth-desc{font-size:13px;color:var(--muted);margin-top:9px;margin-bottom:28px;line-height:1.6}
+.field{margin-bottom:17px}
+.field label{display:block;font-size:11px;color:var(--muted);margin-bottom:9px;font-weight:600}
+.input-wrap{height:52px;border:1px solid var(--border);border-radius:12px;background:var(--surface2);display:flex;align-items:center;padding:0 15px;gap:12px;transition:.2s}
+.input-wrap:focus-within{border-color:rgba(255,255,255,.45);box-shadow:0 0 0 3px rgba(255,255,255,.04)}
+.input-wrap i{color:var(--muted);font-size:14px;width:16px}
+.input-wrap input{width:100%;background:transparent;border:0;outline:none;color:var(--text);font-size:13px}
+.input-wrap input::placeholder{color:#555}
+.password-toggle{border:0;background:transparent;color:var(--muted);padding:6px}
+.error{display:none;color:var(--danger);font-size:11px;margin-top:8px;line-height:1.5}
+.submit-btn{width:100%;height:52px;border:0;border-radius:12px;background:#fff;color:#000;font-weight:800;font-size:12px;letter-spacing:1px;display:flex;align-items:center;justify-content:center;gap:12px;margin-top:8px;transition:.2s}
+body.light .submit-btn{background:#000;color:#fff}
+.submit-btn:hover{transform:translateY(-1px);opacity:.92}
+.submit-btn:disabled{opacity:.65;cursor:wait;transform:none}
+.submit-btn .spinner{display:none;width:16px;height:16px;border:2px solid rgba(0,0,0,.2);border-top-color:#000;border-radius:50%;animation:spin .7s linear infinite}
+body.light .submit-btn .spinner{border-color:rgba(255,255,255,.3);border-top-color:#fff}
+.submit-btn.loading .spinner{display:block}
+.submit-btn.loading .btn-text{display:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.divider{display:flex;align-items:center;gap:14px;margin:23px 0;color:#666;font-size:10px}
+.divider:before,.divider:after{content:"";height:1px;background:var(--border);flex:1}
+.switch-auth{text-align:center;color:var(--muted);font-size:12px;margin-top:24px}
+.switch-auth a{color:var(--text);font-weight:700;text-decoration:none}
+.switch-auth a:hover{text-decoration:underline}
+.terms{font-size:10px;color:#666;text-align:center;line-height:1.7;margin-top:22px}
+.terms a{color:var(--muted)}
+.toast{position:fixed;top:22px;left:50%;transform:translate(-50%,-20px);background:#fff;color:#000;padding:13px 18px;border-radius:12px;font-size:12px;font-weight:600;z-index:50;opacity:0;pointer-events:none;transition:.3s;box-shadow:0 10px 40px rgba(0,0,0,.4);max-width:90%;text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.toast.error-toast{background:#1a1a1a;color:#fff;border:1px solid #444}
+@media(max-width:900px){
+.page{grid-template-columns:1fr}
+.hero{min-height:290px;padding:25px}
+.hero-center{position:relative;top:auto;left:auto;transform:none;margin:45px auto 20px}
+.predator-logo{width:90px;height:90px;font-size:40px;margin-bottom:15px}
+.hero-center h1{font-size:34px}
+.hero-center p{font-size:10px;margin-top:9px}
+.hero-points{margin-top:18px;gap:16px}
+.hero-footer{display:none}
+.auth-side{padding:25px 16px 40px}
+.theme-btn{top:16px;right:16px}
+.auth-card{max-width:500px;padding:27px 22px}
+}
+@media(max-width:420px){
+.hero{min-height:250px}
+.hero-center{margin-top:35px}
+.hero-center h1{font-size:29px}
+.hero-points{gap:12px}
+.hero-point{font-size:9px}
+.auth-card h2{font-size:24px}
+}
 </style>
 </head>
 <body>
-
-<div class="auth-card">
-  <div class="auth-brand">
-    <div class="brand-mark"><i class="fa-solid fa-basketball"></i></div>
-    <h1>SPOTY BET <span>PREDATOR</span></h1>
-  </div>
-
-  <h2>Create Account</h2>
-  <p class="sub">Join the predator side. Real odds, real picks. People winning Sporty Loosing</p>
-  
-  
-  <form id="signupForm">
-    <div class="field">
-      <label><i class="fa-solid fa-user"></i> Username</label>
-      <input type="text" id="username" placeholder="Pick A User Name" autocomplete="username" required>
-    </div>
-    <div class="field">
-      <label><i class="fa-solid fa-envelope"></i> Email</label>
-      <input type="email" id="email" placeholder="Email is used for Verification" autocomplete="email" required>
-    </div>
-    <div class="field">
-      <label><i class="fa-solid fa-lock"></i> Password</label>
-      <input type="password" id="password" placeholder="min 6 characters" autocomplete="new-password" minlength="6" required>
-    </div>
-    <button type="submit" class="btn-gold" id="submitBtn">
-      <i class="fa-solid fa-user-plus"></i> Create Account
-    </button>
-    <div class="msg" id="msg"></div>
-  </form>
-
-  <div class="switch-line">
-    Got an account? <a href="/login">Log in</a>
-  </div>
-
-  <div class="tg-footer">
-    <a href="https://t.me/NEX_TECH_CHANNEL" target="_blank" rel="noopener">
-      <i class="fa-brands fa-telegram"></i> Join my channel
-    </a>
-  </div>
+<div class="page">
+<section class="hero">
+<div class="hero-bg"></div>
+<div class="hero-content">
+<div class="brand">
+<div class="brand-icon"><i class="fa-solid fa-crown"></i></div>
+<div class="brand-name">SPOTY BET<span>PREDATOR</span></div>
 </div>
+</div>
+<div class="hero-center">
+<div class="predator-logo"><i class="fa-solid fa-shield-halved"></i></div>
+<h1><span>SPOTY BET</span><span>PREDATOR</span></h1>
+<p>Predict. Analyze. Win.</p>
+<div class="hero-points">
+<div class="hero-point"><i class="fa-solid fa-bolt"></i> Intelligence</div>
+<div class="hero-point"><i class="fa-solid fa-chart-line"></i> Analysis</div>
+<div class="hero-point"><i class="fa-solid fa-shield"></i> Precision</div>
+</div>
+</div>
+<div class="hero-footer">BUILT FOR THE GAME · POWERED BY DATA</div>
+</section>
+<section class="auth-side">
+<button class="theme-btn" id="themeToggle" aria-label="Toggle theme"><i class="fa-solid fa-sun"></i></button>
+<div class="auth-card">
+<div class="card-label">New Predator Account</div>
+<h2>Create Account</h2>
+<p class="auth-desc">Create your account to explore football odds and track your picks.</p>
+<form id="signupForm">
+<div class="field">
+<label for="username">USERNAME</label>
+<div class="input-wrap">
+<i class="fa-solid fa-user"></i>
+<input id="username" type="text" placeholder="Choose a username" minlength="3" maxlength="24" autocomplete="username" required>
+</div>
+</div>
+<div class="field">
+<label for="email">EMAIL ADDRESS</label>
+<div class="input-wrap">
+<i class="fa-solid fa-envelope"></i>
+<input id="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+</div>
+</div>
+<div class="field">
+<label for="password">PASSWORD</label>
+<div class="input-wrap">
+<i class="fa-solid fa-lock"></i>
+<input id="password" type="password" placeholder="Create a strong password" minlength="6" autocomplete="new-password" required>
+<button class="password-toggle" type="button" id="togglePassword" aria-label="Show password"><i class="fa-solid fa-eye"></i></button>
+</div>
+<div class="error" id="passwordError"></div>
+</div>
+<button class="submit-btn" type="submit" id="signupButton">
+<span class="btn-text">CREATE ACCOUNT <i class="fa-solid fa-arrow-right"></i></span>
+<span class="spinner"></span>
+</button>
+</form>
+<div class="divider">OR</div>
+<div class="switch-auth">Already have an account? <a href="/login">Sign in</a></div>
+<div class="terms">By creating an account, you agree to use Spoty Bet Predator responsibly. This app is an odds analysis and pick tracking tool, not a wagering service.</div>
+</div>
+</section>
+</div>
+<div class="toast" id="toast"></div>
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+import {getAuth,createUserWithEmailAndPassword,updateProfile,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
-<script>
-const form = document.getElementById('signupForm');
-const msg = document.getElementById('msg');
-const btn = document.getElementById('submitBtn');
+const firebaseConfig={
+apiKey:"YOUR_FIREBASE_API_KEY",
+authDomain:"YOUR_FIREBASE_AUTH_DOMAIN",
+projectId:"YOUR_FIREBASE_PROJECT_ID",
+appId:"YOUR_FIREBASE_APP_ID"
+};
 
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  msg.textContent = '';
-  msg.className = 'msg';
-  btn.disabled = true;
-  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Creating...';
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);
+const form=document.getElementById("signupForm");
+const button=document.getElementById("signupButton");
+const toast=document.getElementById("toast");
+let toastTimer;
 
-  const username = document.getElementById('username').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const password = document.getElementById('password').value;
+function showToast(message,isError=false){
+toast.textContent=message;
+toast.classList.toggle("error-toast",isError);
+toast.classList.add("show");
+clearTimeout(toastTimer);
+toastTimer=setTimeout(()=>toast.classList.remove("show"),3200);
+}
 
-  try {
-    const res = await fetch('/api/signup', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, email, password })
-    });
+function setLoading(state){
+button.disabled=state;
+button.classList.toggle("loading",state);
+}
 
-    const data = await res.json();
+document.getElementById("togglePassword").addEventListener("click",()=>{
+const input=document.getElementById("password");
+const icon=document.querySelector("#togglePassword i");
+const showing=input.type==="text";
+input.type=showing?"password":"text";
+icon.className=showing?"fa-solid fa-eye":"fa-solid fa-eye-slash";
+});
 
-    if (!res.ok) {
-      throw new Error(data.error || 'Something went wrong bruu');
-    }
+document.getElementById("themeToggle").addEventListener("click",()=>{
+document.body.classList.toggle("light");
+const light=document.body.classList.contains("light");
+document.getElementById("themeToggle").innerHTML=light?'<i class="fa-solid fa-moon"></i>':'<i class="fa-solid fa-sun"></i>';
+localStorage.setItem("spotyTheme",light?"light":"dark");
+});
 
-    msg.textContent = '✓ Account created! Redirecting...';
-    msg.className = 'msg ok';
+if(localStorage.getItem("spotyTheme")==="light"){
+document.body.classList.add("light");
+document.getElementById("themeToggle").innerHTML='<i class="fa-solid fa-moon"></i>';
+}
 
-    sessionStorage.setItem('sbp_welcome', username);
+onAuthStateChanged(auth,user=>{
+if(user)window.location.replace("/dashboard");
+});
 
-    setTimeout(() => {
-      window.location.href = '/login';
-    }, 1200);
+form.addEventListener("submit",async event=>{
+event.preventDefault();
+const username=document.getElementById("username").value.trim();
+const email=document.getElementById("email").value.trim();
+const password=document.getElementById("password").value;
+const passwordError=document.getElementById("passwordError");
+passwordError.style.display="none";
+passwordError.textContent="";
 
-  } catch (err) {
-    msg.textContent = '✗ ' + err.message;
-    msg.className = 'msg err';
-    btn.disabled = false;
-    btn.innerHTML = '<i class="fa-solid fa-user-plus"></i> Create Account';
-  }
+if(username.length<3){
+showToast("Username must be at least 3 characters.",true);
+return;
+}
+if(!/^[a-zA-Z0-9_]+$/.test(username)){
+showToast("Username can contain letters, numbers and underscores only.",true);
+return;
+}
+if(password.length<6){
+passwordError.textContent="Password must contain at least 6 characters.";
+passwordError.style.display="block";
+return;
+}
+
+setLoading(true);
+try{
+const credential=await createUserWithEmailAndPassword(auth,email,password);
+await updateProfile(credential.user,{displayName:username});
+sessionStorage.setItem("spotyWelcome",username);
+window.location.replace("/login");
+}catch(error){
+const messages={
+"auth/email-already-in-use":"This email already has an account. Please sign in.",
+"auth/invalid-email":"Please enter a valid email address.",
+"auth/weak-password":"Choose a stronger password.",
+"auth/network-request-failed":"Network error. Check your internet connection.",
+"auth/operation-not-allowed":"Email/password sign-up is not enabled in Firebase."
+};
+showToast(messages[error.code]||error.message||"Unable to create your account.",true);
+setLoading(false);
+}
 });
 </script>
-
 </body>
 </html>
