@@ -1,253 +1,252 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spoty Bet Predator · Log In</title>
+<meta name="theme-color" content="#000000">
+<title>Login | Spoty Bet Predator</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <style>
-  *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',system-ui,sans-serif}
-  body{
-    background:#0a0a0a;
-    color:#fff;
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:1.5rem;
-    background-image:
-      radial-gradient(800px 500px at 15% -10%, rgba(255,255,255,.05), transparent 60%),
-      radial-gradient(700px 400px at 110% 100%, rgba(255,255,255,.04), transparent 60%);
-  }
-  .auth-card{
-    background:rgba(255,255,255,.03);
-    border:1px solid rgba(255,255,255,.1);
-    border-radius:24px;
-    padding:2.5rem 2rem 2rem;
-    width:100%;
-    max-width:420px;
-    box-shadow:0 30px 80px rgba(0,0,0,.6);
-    backdrop-filter:blur(20px);
-  }
-  .auth-brand{
-    display:flex;
-    align-items:center;
-    gap:.65rem;
-    margin-bottom:2rem;
-    justify-content:center;
-  }
-  .brand-mark{
-    width:42px;height:42px;border-radius:12px;
-    background:#fff;
-    display:flex;align-items:center;justify-content:center;
-    color:#000;font-size:1.1rem;
-  }
-  .auth-brand h1{font-size:1.1rem;font-weight:900;letter-spacing:-.02em}
-  .auth-brand h1 span{
-    background:#fff;color:#000;
-    padding:.05rem .4rem;border-radius:6px;
-    margin-left:.2rem;
-  }
-  .auth-card h2{
-    font-size:1.6rem;font-weight:900;letter-spacing:-.03em;
-    margin-bottom:.4rem;text-align:center;
-  }
-  .auth-card .sub{
-    font-size:.8rem;color:#888;font-weight:600;
-    text-align:center;margin-bottom:2rem;line-height:1.5;
-  }
-  .welcome-banner{
-    background:rgba(255,255,255,.08);
-    border:1px solid rgba(255,255,255,.15);
-    border-radius:10px;
-    padding:.6rem .9rem;
-    margin-bottom:1.2rem;
-    font-size:.75rem;
-    font-weight:600;
-    color:#ccc;
-    text-align:center;
-    display:none;
-  }
-  .welcome-banner.show{display:block}
-  .welcome-banner b{color:#fff}
-  .field{margin-bottom:1rem}
-  .field label{
-    display:flex;align-items:center;gap:.4rem;
-    font-size:.68rem;font-weight:700;
-    color:#aaa;margin-bottom:.5rem;
-    letter-spacing:.3px;
-  }
-  .field label i{font-size:.7rem;color:#666}
-  .field input{
-    width:100%;background:rgba(0,0,0,.4);
-    border:1px solid rgba(255,255,255,.1);
-    border-radius:12px;padding:.85rem 1rem;
-    color:#fff;font-size:.9rem;font-weight:500;
-    outline:none;transition:.2s;
-    font-family:inherit;
-  }
-  .field input::placeholder{color:#555;font-weight:500}
-  .field input:focus{
-    border-color:#fff;
-    background:rgba(0,0,0,.6);
-    box-shadow:0 0 0 4px rgba(255,255,255,.06);
-  }
-  .pw-wrap{position:relative}
-  .pw-toggle{
-    position:absolute;right:.7rem;top:50%;transform:translateY(-50%);
-    background:none;border:none;color:#555;cursor:pointer;
-    font-size:.85rem;padding:.3rem;
-    transition:.15s;
-  }
-  .pw-toggle:hover{color:#fff}
-  .btn-gold{
-    width:100%;padding:.9rem;border-radius:12px;
-    background:#fff;
-    color:#000;font-weight:800;font-size:.85rem;
-    letter-spacing:.3px;
-    transition:.2s;cursor:pointer;border:none;
-    display:flex;align-items:center;justify-content:center;gap:.5rem;
-    font-family:inherit;
-    margin-top:.5rem;
-  }
-  .btn-gold:hover{background:#e5e5e5;transform:translateY(-1px)}
-  .btn-gold:active{transform:translateY(0)}
-  .btn-gold:disabled{opacity:.5;cursor:wait;transform:none}
-  .msg{
-    margin-top:1rem;font-size:.78rem;font-weight:600;
-    text-align:center;min-height:1.2rem;
-  }
-  .msg.err{color:#ff6b6b}
-  .msg.ok{color:#6bffa3}
-  .switch-line{
-    margin-top:1.5rem;text-align:center;font-size:.78rem;
-    color:#888;font-weight:500;
-  }
-  .switch-line a{color:#fff;text-decoration:none;font-weight:800}
-  .switch-line a:hover{text-decoration:underline}
-  .tg-footer{
-    margin-top:1.8rem;padding-top:1.4rem;
-    border-top:1px solid rgba(255,255,255,.08);
-    text-align:center;
-  }
-  .tg-footer a{
-    display:inline-flex;align-items:center;gap:.45rem;
-    color:#888;font-size:.72rem;font-weight:700;
-    text-decoration:none;
-    transition:.15s;
-  }
-  .tg-footer a:hover{color:#fff}
-  .tg-footer a i{font-size:.9rem}
+:root{--bg:#000;--surface:#0b0b0b;--surface2:#111;--text:#fff;--muted:#888;--border:rgba(255,255,255,.1);--danger:#ff6464}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+body.light{--bg:#f5f5f5;--surface:#fff;--surface2:#eee;--text:#000;--muted:#666;--border:rgba(0,0,0,.12)}
+button,input{font:inherit}
+button{cursor:pointer}
+.page{min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr}
+.hero{position:relative;min-height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:38px}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,#292929 0,#111 38%,#000 80%)}
+.hero-bg:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,#000 100%),repeating-linear-gradient(90deg,transparent 0 80px,rgba(255,255,255,.025) 81px 82px)}
+.brand,.hero-footer,.hero-center{position:relative;z-index:1}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-icon{width:48px;height:48px;border:1px solid var(--border);border-radius:15px;display:grid;place-items:center;font-size:23px;background:rgba(255,255,255,.04)}
+.brand-name{font-size:14px;font-weight:900;letter-spacing:1.5px;line-height:1.4}
+.brand-name span{display:block;color:#888;font-size:10px;letter-spacing:3px}
+.hero-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100%;text-align:center;padding:0 18px}
+.logo{width:145px;height:145px;border:1px solid rgba(255,255,255,.13);border-radius:50%;margin:0 auto 22px;display:grid;place-items:center;font-size:60px;box-shadow:0 0 70px rgba(255,255,255,.05),inset 0 0 30px rgba(255,255,255,.03);position:relative}
+.logo:before{content:"";position:absolute;inset:9px;border:1px solid rgba(255,255,255,.07);border-radius:50%}
+.hero-center h1{font-size:clamp(32px,4vw,52px);font-weight:900;letter-spacing:-2px;line-height:1.05}
+.hero-center h1 span{display:block}
+.hero-center p{margin-top:14px;color:#aaa;font-size:11px;letter-spacing:4px;text-transform:uppercase}
+.points{display:flex;justify-content:center;gap:25px;margin-top:34px}
+.point{font-size:11px;color:#aaa;display:flex;align-items:center;gap:7px}
+.point i{color:#fff}
+.hero-footer{font-size:10px;color:#666;letter-spacing:1px}
+.auth-side{display:flex;align-items:center;justify-content:center;padding:35px;background:var(--bg);position:relative}
+.theme-btn{position:absolute;top:25px;right:25px;width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:var(--surface);color:var(--text);display:grid;place-items:center}
+.card{width:100%;max-width:440px;background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:34px;box-shadow:0 30px 100px rgba(255,255,255,.025)}
+.label{font-size:10px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-bottom:13px}
+.card h2{font-size:28px;font-weight:800;letter-spacing:-1px}
+.desc{font-size:13px;color:var(--muted);margin:9px 0 25px;line-height:1.6}
+.welcome{display:none;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:12px;padding:13px;margin-bottom:20px;font-size:12px;line-height:1.6}
+.welcome.show{display:block}
+.welcome strong{color:var(--text)}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:11px;color:var(--muted);margin-bottom:9px;font-weight:600}
+.input-wrap{height:51px;border:1px solid var(--border);border-radius:12px;background:var(--surface2);display:flex;align-items:center;padding:0 14px;gap:12px;transition:.2s}
+.input-wrap:focus-within{border-color:rgba(255,255,255,.45);box-shadow:0 0 0 3px rgba(255,255,255,.04)}
+.input-wrap>i{color:var(--muted);font-size:14px;width:16px}
+.input-wrap input{width:100%;background:transparent;border:0;outline:none;color:var(--text);font-size:13px}
+.input-wrap input::placeholder{color:#555}
+.eye{border:0;background:transparent;color:var(--muted);padding:6px}
+.forgot{display:flex;justify-content:flex-end;margin:-4px 0 18px}
+.forgot button{border:0;background:none;color:var(--muted);font-size:11px}
+.forgot button:hover{color:var(--text)}
+.primary{width:100%;height:51px;border:0;border-radius:12px;background:#fff;color:#000;font-weight:800;font-size:12px;letter-spacing:1px;display:flex;align-items:center;justify-content:center;gap:12px;margin-top:8px;transition:.2s}
+body.light .primary{background:#000;color:#fff}
+.primary:hover,.google:hover{transform:translateY(-1px);opacity:.92}
+.primary:disabled,.google:disabled{opacity:.6;cursor:wait;transform:none}
+.spinner{display:none;width:16px;height:16px;border:2px solid rgba(0,0,0,.2);border-top-color:#000;border-radius:50%;animation:spin .7s linear infinite}
+body.light .spinner{border-color:rgba(255,255,255,.3);border-top-color:#fff}
+.loading .spinner{display:block}
+.loading .btn-text{display:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.google{width:100%;height:51px;border:1px solid var(--border);border-radius:12px;background:var(--surface2);color:var(--text);display:flex;align-items:center;justify-content:center;gap:12px;font-weight:600;font-size:12px;transition:.2s}
+.google img{width:18px;height:18px}
+.divider{display:flex;align-items:center;gap:14px;margin:20px 0;color:#666;font-size:10px}
+.divider:before,.divider:after{content:"";height:1px;background:var(--border);flex:1}
+.switch{text-align:center;color:var(--muted);font-size:12px;margin-top:22px}
+.switch a{color:var(--text);font-weight:700;text-decoration:none}
+.switch a:hover{text-decoration:underline}
+.terms{font-size:10px;color:#666;text-align:center;line-height:1.7;margin-top:20px}
+.toast{position:fixed;top:22px;left:50%;transform:translate(-50%,-20px);background:#fff;color:#000;padding:13px 18px;border-radius:12px;font-size:12px;font-weight:600;z-index:50;opacity:0;pointer-events:none;transition:.3s;box-shadow:0 10px 40px rgba(0,0,0,.4);max-width:92%;text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.toast.error{background:#191919;color:#fff;border:1px solid #444}
+@media(max-width:900px){.page{grid-template-columns:1fr}.hero{min-height:280px;padding:24px}.hero-center{position:relative;top:auto;left:auto;transform:none;margin:40px auto 18px}.logo{width:90px;height:90px;font-size:40px;margin-bottom:14px}.hero-center h1{font-size:33px}.hero-center p{font-size:10px;margin-top:8px}.points{margin-top:18px;gap:16px}.hero-footer{display:none}.auth-side{padding:25px 16px 40px}.theme-btn{top:15px;right:15px}.card{max-width:500px;padding:27px 22px}}
+@media(max-width:420px){.hero{min-height:245px}.hero-center{margin-top:30px}.hero-center h1{font-size:29px}.points{gap:12px}.point{font-size:9px}.card h2{font-size:25px}}
 </style>
 </head>
 <body>
-
-<div class="auth-card">
-  <div class="auth-brand">
-    <div class="brand-mark"><i class="fa-solid fa-basketball"></i></div>
-    <h1>SPOTY BET <span>PREDATOR</span></h1>
-  </div>
-
-  <h2>Welcome Back</h2>
-  <p class="sub">Log in to your predator account.</p>
-
-  <div class="welcome-banner" id="welcomeBanner"></div>
-
-  <form id="loginForm">
-    <div class="field">
-      <label><i class="fa-solid fa-envelope"></i> Email</label>
-      <input type="email" id="email"  autocomplete="email" required>
-    </div>
-    <div class="field">
-      <label><i class="fa-solid fa-lock"></i> Password</label>
-      <div class="pw-wrap">
-        <input type="password" id="password" autocomplete="current-password" required>
-        <button type="button" class="pw-toggle" id="pwToggle" tabindex="-1" aria-label="Show password">
-          <i class="fa-solid fa-eye"></i>
-        </button>
-      </div>
-    </div>
-    <button type="submit" class="btn-gold" id="submitBtn">
-      <i class="fa-solid fa-unlock"></i> Log In
-    </button>
-    <div class="msg" id="msg"></div>
-  </form>
-
-  <div class="switch-line">
-    No account? <a href="/signup">Sign up</a>
-  </div>
-
-  <div class="tg-footer">
-    <a href="https://t.me/MAFIAN_TECH_CHANNEL" target="_blank" rel="noopener">
-      <i class="fa-brands fa-telegram"></i> Join my channel
-    </a>
-  </div>
+<div class="page">
+<section class="hero">
+<div class="hero-bg"></div>
+<div class="brand">
+<div class="brand-icon"><i class="fa-solid fa-crown"></i></div>
+<div class="brand-name">SPOTY BET<span>PREDATOR</span></div>
 </div>
+<div class="hero-center">
+<div class="logo"><i class="fa-solid fa-shield-halved"></i></div>
+<h1><span>SPOTY BET</span><span>PREDATOR</span></h1>
+<p>Predict. Analyze. Win.</p>
+<div class="points">
+<div class="point"><i class="fa-solid fa-bolt"></i> Intelligence</div>
+<div class="point"><i class="fa-solid fa-chart-line"></i> Analysis</div>
+<div class="point"><i class="fa-solid fa-shield"></i> Precision</div>
+</div>
+</div>
+<div class="hero-footer">BUILT FOR THE GAME · POWERED BY DATA</div>
+</section>
+<section class="auth-side">
+<button class="theme-btn" id="themeToggle" aria-label="Toggle theme"><i class="fa-solid fa-sun"></i></button>
+<div class="card">
+<div class="label">Predator Access</div>
+<h2>Welcome Back</h2>
+<p class="desc">Sign in to continue to your sports analysis dashboard.</p>
+<div class="welcome" id="welcomeBanner"></div>
+<form id="loginForm">
+<div class="field">
+<label for="email">EMAIL ADDRESS</label>
+<div class="input-wrap"><i class="fa-solid fa-envelope"></i><input id="email" type="email" placeholder="you@example.com" autocomplete="email" required></div>
+</div>
+<div class="field">
+<label for="password">PASSWORD</label>
+<div class="input-wrap"><i class="fa-solid fa-lock"></i><input id="password" type="password" placeholder="Enter your password" autocomplete="current-password" required><button class="eye" type="button" id="togglePassword"><i class="fa-solid fa-eye"></i></button></div>
+</div>
+<div class="forgot"><button type="button" id="forgotPassword">Forgot password?</button></div>
+<button class="primary" type="submit" id="loginButton"><span class="btn-text">SIGN IN <i class="fa-solid fa-arrow-right"></i></span><span class="spinner"></span></button>
+</form>
+<div class="divider">OR CONTINUE WITH</div>
+<button class="google" id="googleLogin"><img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google"> Continue with Google</button>
+<div class="switch">Don't have an account? <a href="/signup">Create account</a></div>
+<div class="terms">Your account is secured by Firebase Authentication. Spoty Bet Predator is an odds analysis and pick tracking tool, not a wagering service.</div>
+</div>
+</section>
+</div>
+<div class="toast" id="toast"></div>
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+import{getAuth,signInWithEmailAndPassword,GoogleAuthProvider,signInWithPopup,onAuthStateChanged,sendPasswordResetEmail}from"https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
-<script>
-const welcomeUser = sessionStorage.getItem('sbp_welcome');
-if (welcomeUser) {
-  const banner = document.getElementById('welcomeBanner');
-  banner.innerHTML = `👋 Welcome <b>${welcomeUser}</b>! Log in to continue.`;
-  banner.classList.add('show');
-  sessionStorage.removeItem('sbp_welcome');
+const firebaseConfig={
+apiKey:"AIzaSyAGU-ccpREBZBg7ktSn5blWpdmzhUM_Npo",
+authDomain:"sporty-odds.firebaseapp.com",
+projectId:"sporty-odds",
+storageBucket:"sporty-odds.firebasestorage.app",
+messagingSenderId:"906098232394",
+appId:"1:906098232394:web:daf4606cda0d8bf7e82ab3",
+measurementId:"G-4PZMK4FSFL"
+};
+
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);
+const provider=new GoogleAuthProvider();
+const toast=document.getElementById("toast");
+let toastTimer;
+
+function showToast(message,isError=false){
+toast.textContent=message;
+toast.classList.toggle("error",isError);
+toast.classList.add("show");
+clearTimeout(toastTimer);
+toastTimer=setTimeout(()=>toast.classList.remove("show"),3500);
 }
 
-const form = document.getElementById('loginForm');
-const msg = document.getElementById('msg');
-const btn = document.getElementById('submitBtn');
-const pwInput = document.getElementById('password');
-const pwToggle = document.getElementById('pwToggle');
+function setButtonLoading(button,state){
+button.disabled=state;
+button.classList.toggle("loading",state);
+}
 
-pwToggle.addEventListener('click', () => {
-  const isPw = pwInput.type === 'password';
-  pwInput.type = isPw ? 'text' : 'password';
-  pwToggle.innerHTML = `<i class="fa-solid ${isPw ? 'fa-eye-slash' : 'fa-eye'}"></i>`;
+function authError(error){
+const map={
+"auth/invalid-credential":"Email or password is incorrect.",
+"auth/invalid-email":"Enter a valid email address.",
+"auth/user-not-found":"No account found with this email.",
+"auth/wrong-password":"Incorrect password.",
+"auth/too-many-requests":"Too many attempts. Try again later.",
+"auth/network-request-failed":"Network error. Check your connection.",
+"auth/popup-closed-by-user":"Google sign-in was cancelled.",
+"auth/popup-blocked":"Allow popups for Google sign-in.",
+"auth/operation-not-allowed":"This sign-in method is not enabled in Firebase.",
+"auth/account-exists-with-different-credential":"This email uses a different sign-in method."
+};
+return map[error.code]||"Unable to sign in. Please try again.";
+}
+
+const welcomeName=sessionStorage.getItem("spotyWelcome");
+if(welcomeName){
+const banner=document.getElementById("welcomeBanner");
+banner.innerHTML="<strong>Welcome, "+welcomeName.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))+"!</strong> Your account has been created. Sign in to continue.";
+banner.classList.add("show");
+sessionStorage.removeItem("spotyWelcome");
+}
+
+document.getElementById("togglePassword").addEventListener("click",()=>{
+const input=document.getElementById("password");
+const icon=document.querySelector("#togglePassword i");
+const show=input.type==="password";
+input.type=show?"text":"password";
+icon.className=show?"fa-solid fa-eye-slash":"fa-solid fa-eye";
 });
 
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  msg.textContent = '';
-  msg.className = 'msg';
-  btn.disabled = true;
-  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Logging in...';
+document.getElementById("themeToggle").addEventListener("click",()=>{
+document.body.classList.toggle("light");
+const light=document.body.classList.contains("light");
+document.getElementById("themeToggle").innerHTML=light?'<i class="fa-solid fa-moon"></i>':'<i class="fa-solid fa-sun"></i>';
+localStorage.setItem("spotyTheme",light?"light":"dark");
+});
 
-  const email = document.getElementById('email').value.trim();
-  const password = pwInput.value;
+if(localStorage.getItem("spotyTheme")==="light"){
+document.body.classList.add("light");
+document.getElementById("themeToggle").innerHTML='<i class="fa-solid fa-moon"></i>';
+}
 
-  try {
-    const res = await fetch('/api/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password })
-    });
+onAuthStateChanged(auth,user=>{
+if(user)window.location.replace("/dashboard");
+});
 
-    const data = await res.json();
+document.getElementById("loginForm").addEventListener("submit",async e=>{
+e.preventDefault();
+const button=document.getElementById("loginButton");
+setButtonLoading(button,true);
+try{
+await signInWithEmailAndPassword(auth,document.getElementById("email").value.trim(),document.getElementById("password").value);
+window.location.replace("/dashboard");
+}catch(error){
+showToast(authError(error),true);
+setButtonLoading(button,false);
+}
+});
 
-    if (!res.ok) {
-      throw new Error(data.error || 'Wrong email or password bruu');
-    }
+document.getElementById("googleLogin").addEventListener("click",async()=>{
+const button=document.getElementById("googleLogin");
+button.disabled=true;
+try{
+await signInWithPopup(auth,provider);
+window.location.replace("/dashboard");
+}catch(error){
+showToast(authError(error),true);
+button.disabled=false;
+}
+});
 
-    localStorage.setItem('sbp_token', data.token);
-    localStorage.setItem('sbp_user', JSON.stringify(data.user || {}));
-
-    msg.textContent = '✓ Logged in! Taking you to dashboard...';
-    msg.className = 'msg ok';
-
-    setTimeout(() => {
-      window.location.href = '/dashboard';
-    }, 900);
-
-  } catch (err) {
-    msg.textContent = '✗ ' + err.message;
-    msg.className = 'msg err';
-    btn.disabled = false;
-    btn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> Log In';
-  }
+document.getElementById("forgotPassword").addEventListener("click",async()=>{
+const email=document.getElementById("email").value.trim();
+if(!email){
+showToast("Enter your email address first.",true);
+document.getElementById("email").focus();
+return;
+}
+try{
+await sendPasswordResetEmail(auth,email);
+showToast("Password reset email sent. Check your inbox.");
+}catch(error){
+showToast(authError(error),true);
+}
 });
 </script>
-
 </body>
 </html>
